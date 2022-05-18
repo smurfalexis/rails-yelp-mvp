@@ -1,0 +1,34 @@
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+
+<p>
+  <strong>Reviews:</strong>
+
+  <% if @restaurant.reviews == true %>
+  <br>
+    <% @restaurant.reviews.each do |review| %>
+    Comment: <%= review.content %>
+    <br>
+    stars: <%= review.rating %>
+    <br>
+    <br>
+    <% end %>
+  <% else %>
+    "Be the first to leave a review for this restaurant!"
+  <% end %>
+</p>
+<%= link_to 'Back', restaurants_path, class: "btn btn-primary"%>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
